@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Main\n\n\nFishmetica is a Julia package for the population dynamics modeling.",
+            "title": "Main"
+        },
+        {
+            "location": "/#main",
+            "text": "Fishmetica is a Julia package for the population dynamics modeling.",
+            "title": "Main"
+        }
+    ]
+}
