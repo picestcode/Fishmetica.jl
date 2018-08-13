@@ -33,3 +33,7 @@ after_success:
   - julia -e 'cd(Pkg.dir("Fishmetica")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
   - julia -e 'cd(Pkg.dir("Fishmetica")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+
+
+#!/bin/bash
+REPO_TOKEN=$38698574-dac5-4371-97ac-9160870770a6 julia -e 'cd(Pkg.dir("MyPkg")); using Coverage;  Codecov.submit_token(Codecov.process_folder())'
