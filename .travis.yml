@@ -36,4 +36,4 @@ after_success:
 
 
 #!/bin/bash
-REPO_TOKEN=$38698574-dac5-4371-97ac-9160870770a6 julia -e 'cd(Pkg.dir("MyPkg")); using Coverage;  Codecov.submit_token(Codecov.process_folder())'
+REPO_TOKEN=$38698574-dac5-4371-97ac-9160870770a6 julia -e 'cd(Pkg.dir("Fishmetica")); using Coverage;  Codecov.submit_token(Codecov.process_folder())'
