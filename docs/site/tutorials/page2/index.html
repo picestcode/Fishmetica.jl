@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Igor Shevchenko">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Types - Fishmetica</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../assets/Documenter.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Types";
+    var mkdocs_page_input_path = "tutorials/page2.md";
+    var mkdocs_page_url = "/tutorials/page2/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Fishmetica</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Main</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page5/">Constants</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page4/">Generating parameters and strucures</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Types</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#representing-cohorts-with-matrices">Representing cohorts with matrices</a></li>
+    
+
+    <li class="toctree-l2"><a href="#representing-cohorts-with-vectors">Representing cohorts with vectors</a></li>
+    
+
+    <li class="toctree-l2"><a href="#generating-vectors">Generating vectors</a></li>
+    
+
+    <li class="toctree-l2"><a href="#type-transformations">Type transformations</a></li>
+    
+
+    <li class="toctree-l2"><a href="#testing-type-transformations">Testing type transformations</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page1/">Bayesian estimations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page3/">Index</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Fishmetica</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Types</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/picestcode/Fishmetica/edit/master/docs/tutorials/page2.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Types and their transformations</p>
+<p><a id='Representing-cohorts-with-matrices-1'></a></p>
+<h2 id="representing-cohorts-with-matrices">Representing cohorts with matrices</h2>
+<p><a id='Fishmetica.csmtx' href='#Fishmetica.csmtx'>#</a>
+<strong><code>Fishmetica.csmtx</code></strong> &mdash; <em>Type</em>.</p>
+<p>cohorts related matrix year_b - initial physical year tmax - number of seasons jmax - number of ages mtx: x,y,w,m,f, etc.</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L117-L123' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohorts_t' href='#Fishmetica.cohorts_t'>#</a>
+<strong><code>Fishmetica.cohorts_t</code></strong> &mdash; <em>Type</em>.</p>
+<p>cohorts as 3 matrices: year_b - initial year, year_e - last year,  x - abundance, y - catch, w - weight (obsolete)</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1-L3' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohorts_t1' href='#Fishmetica.cohorts_t1'>#</a>
+<strong><code>Fishmetica.cohorts_t1</code></strong> &mdash; <em>Type</em>.</p>
+<p>cohorts as 3 tables (=cohorts_m) yb - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages x,y,w- tables with abundunce, catch, weight</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L86-L92' class='documenter-source'>source</a><br></p>
+<p><a id='Representing-cohorts-with-vectors-1'></a></p>
+<h2 id="representing-cohorts-with-vectors">Representing cohorts with vectors</h2>
+<p><a id='Fishmetica.cvec' href='#Fishmetica.cvec'>#</a>
+<strong><code>Fishmetica.cvec</code></strong> &mdash; <em>Type</em>.</p>
+<p>detail mtx representation of a cohort as sequence of vecs no- the number yb - physical year associated with cohort (when age=1) jbeg - youngest age  len - length jtrust - trusted age vec</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L131-L139' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.csvecs' href='#Fishmetica.csvecs'>#</a>
+<strong><code>Fishmetica.csvecs</code></strong> &mdash; <em>Type</em>.</p>
+<p>cohort as vecs</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L150-L152' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohort_v' href='#Fishmetica.cohort_v'>#</a>
+<strong><code>Fishmetica.cohort_v</code></strong> &mdash; <em>Type</em>.</p>
+<p>detail cohort representation  tmax - number of seasons jmax - number of ages yb - physical year assciated with cohort (when age=1) jb - youngest age  l - length jt - trusted age xv,yv,wv - vectors with abundunce, catch, weight</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L13-L22' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohorts_v' href='#Fishmetica.cohorts_v'>#</a>
+<strong><code>Fishmetica.cohorts_v</code></strong> &mdash; <em>Type</em>.</p>
+<p>detail  representation of given cohorts tmax - number of seasons jmax - number of ages cs -  vector of cohort of type cohort_v</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L35-L40' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohorts_v1' href='#Fishmetica.cohorts_v1'>#</a>
+<strong><code>Fishmetica.cohorts_v1</code></strong> &mdash; <em>Type</em>.</p>
+<p>detail  representation of given cohorts tmax - number of seasons jmax - number of ages cs -  vector of cohort of type cohort_v</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L48-L53' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohort_v1' href='#Fishmetica.cohort_v1'>#</a>
+<strong><code>Fishmetica.cohort_v1</code></strong> &mdash; <em>Type</em>.</p>
+<p>detail cohort representation  no- the number yb - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages jbeg - initial age  len - length jtrust - trusted age xv,yv,wv - vectors with abundunce, catch, weight</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L62-L72' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.cohorts_v2' href='#Fishmetica.cohorts_v2'>#</a>
+<strong><code>Fishmetica.cohorts_v2</code></strong> &mdash; <em>Type</em>.</p>
+<p>cohorts as cs: cohort_v1? year_b - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L105-L110' class='documenter-source'>source</a><br></p>
+<h2 id="generating-vectors">Generating vectors</h2>
+<p><a id='Fishmetica.gvecs' href='#Fishmetica.gvecs'>#</a>
+<strong><code>Fishmetica.gvecs</code></strong> &mdash; <em>Function</em>.</p>
+<p>generates xv1,yv1 of csvecs type with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs first makes a deep copy, then modifies vectors </p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L639-L642' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gvecs1' href='#Fishmetica.gvecs1'>#</a>
+<strong><code>Fishmetica.gvecs1</code></strong> &mdash; <em>Function</em>.</p>
+<p>generates xv1,yv1 of csvecs type with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs first makes a deep copy, then modifies vectors </p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L844-L847' class='documenter-source'>source</a><br></p>
+<h2 id="type-transformations">Type transformations</h2>
+<p><a id='Fishmetica.cst2csv2' href='#Fishmetica.cst2csv2'>#</a>
+<strong><code>Fishmetica.cst2csv2</code></strong> &mdash; <em>Function</em>.</p>
+<p>cohorts_t1-&gt;cohorts_v2</p>
+<p>cohorts_t1: year_b - initial physical year tmax - number of seasons jmax - number of ages x,y,w -  matrices  with abundunce, catch, weight</p>
+<p>cohorts_v2: year_b - initial physical year tmax - number of seasons jmax - number of ages cs - cohorts of type cohort_v1</p>
+<p>cohort_v1: no- the number yb - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages jbeg - initial age  len - length jtrust - trusted age xv,yv,wv- vectors with abundunce, catch, weight tmax+jmax-1 – number of related cohorts</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L162-L188' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.csv2cst' href='#Fishmetica.csv2cst'>#</a>
+<strong><code>Fishmetica.csv2cst</code></strong> &mdash; <em>Function</em>.</p>
+<p>cohorts_v2-&gt;cohirts_t1</p>
+<p>cohorts_t1: year_b - initial physical year tmax - number of seasons jmax - number of ages x,y,w -  matrices  with abundunce, catch, weight</p>
+<p>cohorts_v2: year_b - initial physical year tmax - number of seasons jmax - number of ages cs - cohorts of type cohort_v1</p>
+<p>cohort_v1: no- the number yb - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages jbeg - initial age  len - length jtrust - trusted age xv,yv,wv- vectors with abundunce, catch, weight</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L253-L278' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.csmtx2csvs' href='#Fishmetica.csmtx2csvs'>#</a>
+<strong><code>Fishmetica.csmtx2csvs</code></strong> &mdash; <em>Function</em>.</p>
+<p>cohorts related matrix (of type csmtx: x,y,w,m,f,z,g)-&gt;sequence of vectors (of type csvecs)</p>
+<p>csrm:cohorts related matrix (of type csrm) year_b - initial physical year tmax - number of seasons jmax - number of ages x,y,w, m,f,g -  cohorts related matrices  </p>
+<p>cvec: detail cohort representation as vec no- the number in the sequence yb - physical year associated with cohort (when age=1) jbeg - initial age  len - length jtrust - trusted age vec</p>
+<p>csvecs: cohorts related mtx as a sequence of cvec no- the number yb - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages jbeg - initial age  len - length jtrust - trusted age xv,yv,wv- vectors with abundunce, catch, weight tmax+jmax-1 – number of related cohorts</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L401-L430' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.csvs2csmtx' href='#Fishmetica.csvs2csmtx'>#</a>
+<strong><code>Fishmetica.csvs2csmtx</code></strong> &mdash; <em>Function</em>.</p>
+<p>sequence of vectors (of type csvecs)-&gt;cohorts related matrix (of type csrm) (x,y,w,m,f,z,g)</p>
+<p>csrm:cohorts related matrix (of type csrm) year_b - initial physical year tmax - number of seasons jmax - number of ages x,y,w, m,f,g -  cohorts related matrices  </p>
+<p>cvec: detail cohort representation as vec no- the number in the sequence yb - physical year associated with cohort (when age=1) jbeg - initial age  len - length jtrust - trusted age vec</p>
+<p>csvecs: cohorts related mtx as a sequence of cvec no- the number yb - physical year associated with cohort (when age=1) tmax - number of seasons jmax - number of ages jbeg - initial age  len - length jtrust - trusted age xv,yv,wv- vectors with abundunce, catch, weight tmax+jmax-2 – number of related cohorts</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L490-L519' class='documenter-source'>source</a><br></p>
+<p><a id='Testing-type-transformations-1'></a></p>
+<h2 id="testing-type-transformations">Testing type transformations</h2>
+<p><a id='Fishmetica.eq_cvec' href='#Fishmetica.eq_cvec'>#</a>
+<strong><code>Fishmetica.eq_cvec</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  2 cohorts of cvec type equal</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L26-L28' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.eq_csvecs' href='#Fishmetica.eq_csvecs'>#</a>
+<strong><code>Fishmetica.eq_csvecs</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  2 descriptions of csmtx type equal</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L40-L42' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.eq_cst' href='#Fishmetica.eq_cst'>#</a>
+<strong><code>Fishmetica.eq_cst</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  2 cohorts of cohorts_t type equal</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L100-L102' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.eq_cv1' href='#Fishmetica.eq_cv1'>#</a>
+<strong><code>Fishmetica.eq_cv1</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  2 cohorts of cohort_v1 type equal</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L113-L115' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.eq_cv1_alt' href='#Fishmetica.eq_cv1_alt'>#</a>
+<strong><code>Fishmetica.eq_cv1_alt</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  vectors of cohorts of cohort_v1 type equal alt</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L130-L132' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.eq_csv2' href='#Fishmetica.eq_csv2'>#</a>
+<strong><code>Fishmetica.eq_csv2</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  2 cohorts of cohorts_v2 type equal</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L142-L144' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.eq_csmtx' href='#Fishmetica.eq_csmtx'>#</a>
+<strong><code>Fishmetica.eq_csmtx</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if  2 cohorts of cohorts_t1 type equal</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L153-L155' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.runtest_cst2csv' href='#Fishmetica.runtest_cst2csv'>#</a>
+<strong><code>Fishmetica.runtest_cst2csv</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if direct*reverse=equal for cst2csv2 and csv2cst</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L1-L3' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.runtest_csmtx2csvs' href='#Fishmetica.runtest_csmtx2csvs'>#</a>
+<strong><code>Fishmetica.runtest_csmtx2csvs</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if csv2cst(cst2csv2(cst)=cst</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L54-L56' class='documenter-source'>source</a><br></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../page1/" class="btn btn-neutral float-right" title="Bayesian estimations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../page4/" class="btn btn-neutral" title="Generating parameters and strucures"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/picestcode/Fishmetica/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../page4/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../page1/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+      <script src="../../assets/mathjaxhelper.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

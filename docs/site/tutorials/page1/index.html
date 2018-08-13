@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Igor Shevchenko">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Bayesian estimations - Fishmetica</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../assets/Documenter.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Bayesian estimations";
+    var mkdocs_page_input_path = "tutorials/page1.md";
+    var mkdocs_page_url = "/tutorials/page1/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Fishmetica</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Main</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page5/">Constants</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page4/">Generating parameters and strucures</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page2/">Types</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Bayesian estimations</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#filtering">Filtering</a></li>
+    
+
+    <li class="toctree-l2"><a href="#prediction">Prediction</a></li>
+    
+
+    <li class="toctree-l2"><a href="#smoothing">Smoothing</a></li>
+    
+
+    <li class="toctree-l2"><a href="#auxilary">Auxilary</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page3/">Index</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Fishmetica</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Bayesian estimations</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/picestcode/Fishmetica/edit/master/docs/tutorials/page1.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Fuctions to generate $\mu$'s and $\sigma^2$'s</p>
+<p><a id='Filtering-1'></a></p>
+<h2 id="filtering">Filtering</h2>
+<p><a id='Fishmetica.sigma2f' href='#Fishmetica.sigma2f'>#</a>
+<strong><code>Fishmetica.sigma2f</code></strong> &mdash; <em>Function</em>.</p>
+<p>filtering: returns a vector of deviations ($sigma^2^f$) for a cohort  sigma^2_0 - variance  for initial age sigma^2_e -  variance  for the evidance vector (catches) sigma^2_x -  variance  for the state vector (population) l - the length of the cohort</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L28' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.muf' href='#Fishmetica.muf'>#</a>
+<strong><code>Fishmetica.muf</code></strong> &mdash; <em>Function</em>.</p>
+<p>filtering: returns a vector of means (mu^f) for a cohort  alpha - coefficients for the state x_{t+1}=x_t +alpha_t beta - coefficients for the observation y_{t}=x_t +beta_t  e - the evidance vector mu_0 - mean for the initial age sigma^2_0 - variance (deviation is the square root of its variance) for initial age mu_e - mean for the evidence sigma^2_e - variance  for the evidance  (catch) mu_x - mean for the state sigma^2_e - variance for the state (population) l - the length of the cohort</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L46-L58' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.genmus2f' href='#Fishmetica.genmus2f'>#</a>
+<strong><code>Fishmetica.genmus2f</code></strong> &mdash; <em>Function</em>.</p>
+<p>filtering: returns filtered cohorts represented as vecs: csvlogts1muf - means,csvlogts1s2f - sigmas^2 (deviations),</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L75-L77' class='documenter-source'>source</a><br></p>
+<p><a id='Prediction-1'></a></p>
+<h2 id="prediction">Prediction</h2>
+<p><a id='Fishmetica.sigma2p' href='#Fishmetica.sigma2p'>#</a>
+<strong><code>Fishmetica.sigma2p</code></strong> &mdash; <em>Function</em>.</p>
+<p>prediction: returns the vector of deviation predictions (sigma^2^p_{t+1},..., sigma^2^p_{t+k+1}) for a cohort  sigma^2_x - variance for the state vector (population) l - the length of the cohort</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L125-L129' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.mup' href='#Fishmetica.mup'>#</a>
+<strong><code>Fishmetica.mup</code></strong> &mdash; <em>Function</em>.</p>
+<p>prediction: returns the vector of mean predictions (mu^p_{t+1}, ..., mu^p_{t+k+1}) for a cohort  alphak=(alpha^t, ..., alpha_{t+k}) - (virtual) coefficients for x_{t+k+1}=x_{t+k} +alpha_{t+k} -  muft - mu^f_t mu_x - mean for the state k &gt;= 1 - the prediction step</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L139-L145' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.genmus2p' href='#Fishmetica.genmus2p'>#</a>
+<strong><code>Fishmetica.genmus2p</code></strong> &mdash; <em>Function</em>.</p>
+<p>makes k predictions for all cohorts (a^e+1, .., a^e+k)  with yr&gt;=yr2. cuts extra elements with age greater than jmax.  returns filtered cohorts represented as vecs: csvlogts1mup - means,csvlogts1s2p - sigmas^2 (deviations), mup and s2p (means and sigmas^2 (deviations))</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L155-L159' class='documenter-source'>source</a><br></p>
+<p><a id='Smoothing-1'></a></p>
+<h2 id="smoothing">Smoothing</h2>
+<p><a id='Fishmetica.sigma2b' href='#Fishmetica.sigma2b'>#</a>
+<strong><code>Fishmetica.sigma2b</code></strong> &mdash; <em>Function</em>.</p>
+<p>backward: returns a vector of deviations (sigma^2^b) for a cohort  sigma^2_0 - variance  for initial age sigma^2_e -  variance  for the evidance vector (catches) sigma^2_x -  variance  for the state vector (population) l - the length of the cohort</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L275-L281' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.genmus2s' href='#Fishmetica.genmus2s'>#</a>
+<strong><code>Fishmetica.genmus2s</code></strong> &mdash; <em>Function</em>.</p>
+<p>smoothing: makes several cohorts represented as vecs: csvlogts1mus - means,csvlogts1s2s - sigmas^2 (deviations)</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L296-L298' class='documenter-source'>source</a><br></p>
+<p><a id='Auxilary-1'></a></p>
+<h2 id="auxilary">Auxilary</h2>
+<p><a id='Fishmetica.genG' href='#Fishmetica.genG'>#</a>
+<strong><code>Fishmetica.genG</code></strong> &mdash; <em>Function</em>.</p>
+<p>generates G with M (natural mortality) and F (catch mortality), Z (full mortality)</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L11-L13' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.genZ' href='#Fishmetica.genZ'>#</a>
+<strong><code>Fishmetica.genZ</code></strong> &mdash; <em>Function</em>.</p>
+<p>generates Z (full)  with M (natural mortality) and F (catch mortality)</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L1-L3' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.genQuantile' href='#Fishmetica.genQuantile'>#</a>
+<strong><code>Fishmetica.genQuantile</code></strong> &mdash; <em>Function</em>.</p>
+<p>at +p%</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L397-L399' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.genQuantile1' href='#Fishmetica.genQuantile1'>#</a>
+<strong><code>Fishmetica.genQuantile1</code></strong> &mdash; <em>Function</em>.</p>
+<p>at -p%</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/hmm.jl#L414-L416' class='documenter-source'>source</a><br></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../page3/" class="btn btn-neutral float-right" title="Index">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../page2/" class="btn btn-neutral" title="Types"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/picestcode/Fishmetica/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../page2/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../page3/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+      <script src="../../assets/mathjaxhelper.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

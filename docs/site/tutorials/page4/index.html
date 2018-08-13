@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Igor Shevchenko">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Generating parameters and strucures - Fishmetica</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../assets/Documenter.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Generating parameters and strucures";
+    var mkdocs_page_input_path = "tutorials/page4.md";
+    var mkdocs_page_url = "/tutorials/page4/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Fishmetica</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Main</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page5/">Constants</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Generating parameters and strucures</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#model-components">Model components</a></li>
+    
+
+    <li class="toctree-l2"><a href="#adding-noise">Adding noise</a></li>
+    
+
+    <li class="toctree-l2"><a href="#optimization">Optimization</a></li>
+    
+
+    <li class="toctree-l2"><a href="#testing-generated-matrices">Testing generated matrices</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page2/">Types</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page1/">Bayesian estimations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../page3/">Index</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Fishmetica</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Generating parameters and strucures</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/picestcode/Fishmetica/edit/master/docs/tutorials/page4.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Generating parameters and structures</p>
+<h2 id="model-components">Model components</h2>
+<p><a id='Fishmetica.gm1' href='#Fishmetica.gm1'>#</a>
+<strong><code>Fishmetica.gm1</code></strong> &mdash; <em>Function</em>.</p>
+<p>generates x,y with M,F,W,kx,kw,x1j,xt1</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1674-L1676' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.sigma' href='#Fishmetica.sigma'>#</a>
+<strong><code>Fishmetica.sigma</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns sigma for  j</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L1-L3' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.ushape' href='#Fishmetica.ushape'>#</a>
+<strong><code>Fishmetica.ushape</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns u-function for j</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L10-L12' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.w' href='#Fishmetica.w'>#</a>
+<strong><code>Fishmetica.w</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns wieght for t,j (according to the ovsyannikov data)</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L24-L26' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gwtj' href='#Fishmetica.gwtj'>#</a>
+<strong><code>Fishmetica.gwtj</code></strong> &mdash; <em>Function</em>.</p>
+<p>wtj</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L32-L34' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.h' href='#Fishmetica.h'>#</a>
+<strong><code>Fishmetica.h</code></strong> &mdash; <em>Function</em>.</p>
+<p>fills H with 1's</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L44-L46' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.ghtj' href='#Fishmetica.ghtj'>#</a>
+<strong><code>Fishmetica.ghtj</code></strong> &mdash; <em>Function</em>.</p>
+<p>mtj</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L52-L54' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gmtj' href='#Fishmetica.gmtj'>#</a>
+<strong><code>Fishmetica.gmtj</code></strong> &mdash; <em>Function</em>.</p>
+<p>mtj</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L65-L67' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gft' href='#Fishmetica.gft'>#</a>
+<strong><code>Fishmetica.gft</code></strong> &mdash; <em>Function</em>.</p>
+<p>ft=0.2</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L78-L80' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gftj' href='#Fishmetica.gftj'>#</a>
+<strong><code>Fishmetica.gftj</code></strong> &mdash; <em>Function</em>.</p>
+<p>ftj</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L87-L89' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gx' href='#Fishmetica.gx'>#</a>
+<strong><code>Fishmetica.gx</code></strong> &mdash; <em>Function</em>.</p>
+<p>x</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L99-L101' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gy' href='#Fishmetica.gy'>#</a>
+<strong><code>Fishmetica.gy</code></strong> &mdash; <em>Function</em>.</p>
+<p>y</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L116-L118' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gg' href='#Fishmetica.gg'>#</a>
+<strong><code>Fishmetica.gg</code></strong> &mdash; <em>Function</em>.</p>
+<p>generates g matrix with m and f, tmax,jmax</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1746-L1748' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gz' href='#Fishmetica.gz'>#</a>
+<strong><code>Fishmetica.gz</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns total mortality z as sum of natural m and fishing f mortality matrices</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1737-L1739' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gm_burago' href='#Fishmetica.gm_burago'>#</a>
+<strong><code>Fishmetica.gm_burago</code></strong> &mdash; <em>Function</em>.</p>
+<p>x,y</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L129-L131' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.gm' href='#Fishmetica.gm'>#</a>
+<strong><code>Fishmetica.gm</code></strong> &mdash; <em>Function</em>.</p>
+<p>x,y</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L211-L213' class='documenter-source'>source</a><br></p>
+<h2 id="adding-noise">Adding noise</h2>
+<p><a id='Fishmetica.noise2ts_burago' href='#Fishmetica.noise2ts_burago'>#</a>
+<strong><code>Fishmetica.noise2ts_burago</code></strong> &mdash; <em>Function</em>.</p>
+<p>adds some noise with d(m,s) (laplace, normal) to a matrix</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L292-L294' class='documenter-source'>source</a><br></p>
+<h2 id="optimization">Optimization</h2>
+<p><a id='Fishmetica.Lp' href='#Fishmetica.Lp'>#</a>
+<strong><code>Fishmetica.Lp</code></strong> &mdash; <em>Function</em>.</p>
+<p>look how to evaluate closeness of data and model!!!! as L1+L2 no prints out</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1217-L1221' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.Lp12' href='#Fishmetica.Lp12'>#</a>
+<strong><code>Fishmetica.Lp12</code></strong> &mdash; <em>Function</em>.</p>
+<p>look how to evaluate closeness of data and model!!!! as L1+L2</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1498-L1501' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.Lmine2' href='#Fishmetica.Lmine2'>#</a>
+<strong><code>Fishmetica.Lmine2</code></strong> &mdash; <em>Function</em>.</p>
+<p>L as L1+L2 with dispersions for the normal distribution, p=2 no prints out</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1280-L1283' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.Lmine2max' href='#Fishmetica.Lmine2max'>#</a>
+<strong><code>Fishmetica.Lmine2max</code></strong> &mdash; <em>Function</em>.</p>
+<p>L as max no prints out</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1386-L1389' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.Lpv' href='#Fishmetica.Lpv'>#</a>
+<strong><code>Fishmetica.Lpv</code></strong> &mdash; <em>Function</em>.</p>
+<p>evaluates criteria</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1764-L1766' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragofunc' href='#Fishmetica.buragofunc'>#</a>
+<strong><code>Fishmetica.buragofunc</code></strong> &mdash; <em>Function</em>.</p>
+<p>criterion (Laplace) evaluation for cohorts of cst type/Lp, p=1</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L357-L359' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragofuncp2' href='#Fishmetica.buragofuncp2'>#</a>
+<strong><code>Fishmetica.buragofuncp2</code></strong> &mdash; <em>Function</em>.</p>
+<p>criterion (Gauss) evaluation for cohorts of cst type/Lp, p=2</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L405-L407' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.minefuncp2' href='#Fishmetica.minefuncp2'>#</a>
+<strong><code>Fishmetica.minefuncp2</code></strong> &mdash; <em>Function</em>.</p>
+<p>criterion (normal, deviation) evaluation for cohorts of cst type/Lmine2, p=2</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L452-L454' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.minefuncp2max' href='#Fishmetica.minefuncp2max'>#</a>
+<strong><code>Fishmetica.minefuncp2max</code></strong> &mdash; <em>Function</em>.</p>
+<p>criterion (normal, deviation) evaluation for cohorts of cst type/Lmine2max, p=2</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L501-L503' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragofunc12' href='#Fishmetica.buragofunc12'>#</a>
+<strong><code>Fishmetica.buragofunc12</code></strong> &mdash; <em>Function</em>.</p>
+<p>criterion (normal, deviation) evaluation for cohorts of cst type/Lp12, p=2</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L549-L551' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragofunc_vjt_2' href='#Fishmetica.buragofunc_vjt_2'>#</a>
+<strong><code>Fishmetica.buragofunc_vjt_2</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns Lpv</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/Fishmetica.jl#L252-L254' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragofunc_v' href='#Fishmetica.buragofunc_v'>#</a>
+<strong><code>Fishmetica.buragofunc_v</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns Lpv</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1855-L1857' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragoconstraint1' href='#Fishmetica.buragoconstraint1'>#</a>
+<strong><code>Fishmetica.buragoconstraint1</code></strong> &mdash; <em>Function</em>.</p>
+<p>constraint</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L310-L312' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragoconstraint2' href='#Fishmetica.buragoconstraint2'>#</a>
+<strong><code>Fishmetica.buragoconstraint2</code></strong> &mdash; <em>Function</em>.</p>
+<p>constraint</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L317-L319' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragoconstraint3' href='#Fishmetica.buragoconstraint3'>#</a>
+<strong><code>Fishmetica.buragoconstraint3</code></strong> &mdash; <em>Function</em>.</p>
+<p>constraint</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L324-L326' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragoconstraint4' href='#Fishmetica.buragoconstraint4'>#</a>
+<strong><code>Fishmetica.buragoconstraint4</code></strong> &mdash; <em>Function</em>.</p>
+<p>constraint</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L331-L333' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragoconstraint5' href='#Fishmetica.buragoconstraint5'>#</a>
+<strong><code>Fishmetica.buragoconstraint5</code></strong> &mdash; <em>Function</em>.</p>
+<p>constraint</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L345-L347' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.buragoconstraint6' href='#Fishmetica.buragoconstraint6'>#</a>
+<strong><code>Fishmetica.buragoconstraint6</code></strong> &mdash; <em>Function</em>.</p>
+<p>constraint</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L351-L353' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.optimizeLf' href='#Fishmetica.optimizeLf'>#</a>
+<strong><code>Fishmetica.optimizeLf</code></strong> &mdash; <em>Function</em>.</p>
+<p>optimizes func with 2 algs (a -main and a1 - local), (burago)func (Lp, Lp12, etc)  and 4 buragoconstraints </p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L606-L608' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.optimizeL' href='#Fishmetica.optimizeL'>#</a>
+<strong><code>Fishmetica.optimizeL</code></strong> &mdash; <em>Function</em>.</p>
+<p>optimizes Lp with 2 algs (a -main and a1 - local), buragofunc   and 4 buragoconstraints</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L656-L658' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.optimizeLs' href='#Fishmetica.optimizeLs'>#</a>
+<strong><code>Fishmetica.optimizeLs</code></strong> &mdash; <em>Function</em>.</p>
+<p>optimizes Lp with 1 algs (a -main), buragofunc   and 4 buragoconstraints, no lower_bounds, no x_tol, no local_optimizer? no population</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L712-L715' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.optimizeLp_v' href='#Fishmetica.optimizeLp_v'>#</a>
+<strong><code>Fishmetica.optimizeLp_v</code></strong> &mdash; <em>Function</em>.</p>
+<p>optimizes Lpv</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/fishmetica3.jl#L1813-L1815' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.optimizeLp_v2' href='#Fishmetica.optimizeLp_v2'>#</a>
+<strong><code>Fishmetica.optimizeLp_v2</code></strong> &mdash; <em>Function</em>.</p>
+<p>optimizes Lp with 2 algs (a -main and a1 - local), buragofunc_v   and 4 buragoconstraints</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L755-L757' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.optimizeLp_vjt_2' href='#Fishmetica.optimizeLp_vjt_2'>#</a>
+<strong><code>Fishmetica.optimizeLp_vjt_2</code></strong> &mdash; <em>Function</em>.</p>
+<p>returns (minf,minx,ret)</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/Fishmetica.jl#L198-L200' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.opt_v' href='#Fishmetica.opt_v'>#</a>
+<strong><code>Fishmetica.opt_v</code></strong> &mdash; <em>Function</em>.</p>
+<p>evaluates vector of unknown pars with use of given   ALGS=(:LN_NELDERMEAD, :LN_SBPLX, :LN_COBYLA, :LN_NEWUOA, :LN_PRAXIS, :LN_BOBYQA, :LN_AUGLAG, :LN_AUGLAG_EQ) from NLopt and LN_AUGLAG (7),   xx - initial approximation for pars, k - number of iterations, algs - list of algs</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/burago-2.jl#L808-L815' class='documenter-source'>source</a><br></p>
+<h2 id="testing-generated-matrices">Testing generated matrices</h2>
+<p><a id='Fishmetica.testgmx' href='#Fishmetica.testgmx'>#</a>
+<strong><code>Fishmetica.testgmx</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if generated with M, F matrix x corresponds to model relations</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L9-L11' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.testgmy' href='#Fishmetica.testgmy'>#</a>
+<strong><code>Fishmetica.testgmy</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if generated with M, F, W matrix y corresponds to model relations</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L85-L87' class='documenter-source'>source</a><br></p>
+<p><a id='Fishmetica.testgmy1' href='#Fishmetica.testgmy1'>#</a>
+<strong><code>Fishmetica.testgmy1</code></strong> &mdash; <em>Function</em>.</p>
+<p>checks if generated with parameters matrix y corresponds  to model relations</p>
+<p><a target='_blank' href='https://github.com/picestcode/Fishmetica.jl/blob/028737beb977c8c74424b038d5cf0c6bb61155ec/src/tests.jl#L62-L64' class='documenter-source'>source</a><br></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../page2/" class="btn btn-neutral float-right" title="Types">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../page5/" class="btn btn-neutral" title="Constants"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/picestcode/Fishmetica/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../page5/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../page2/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+      <script src="../../assets/mathjaxhelper.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
