@@ -1,8 +1,8 @@
-W=readdlm("/home/igor/.julia/v0.6/Fishmetica/test/W.txt")
+W=readdlm("W.txt")
 
-x=readdlm("/home/igor/.julia/v0.6/Fishmetica/test/x.txt")
+x=readdlm("x.txt")
 
-y=readdlm("/home/igor/.julia/v0.6/Fishmetica/test/y.txt")
+y=readdlm("y.txt")
 
 yb=1974
 tmax,jmax=size(x)
