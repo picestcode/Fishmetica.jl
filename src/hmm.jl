@@ -402,7 +402,7 @@ function genQuantile(lmu,lsigma2,p)
     lq=zeros(l) 
     for i in 1:l
         lq[i]=if lsigma2[i]>0. 
-           quantile(Normal(lmu[i],sqrt(lsigma2[i])),p)
+           quantile(Distributions.Normal(lmu[i],sqrt(lsigma2[i])),p)
             else 
             lmu[i]
         end
@@ -419,7 +419,7 @@ function genQuantile1(lmu,lsigma2,p)
     lq=zeros(l) 
     for i in 1:l
         lq[i]=if lsigma2[i]>0. 
-           2*lmu[i]-quantile(Normal(lmu[i],sqrt(lsigma2[i])),p)
+           2*lmu[i]-quantile(Distributions.Normal(lmu[i],sqrt(lsigma2[i])),p)
             else 
             lmu[i]
         end
