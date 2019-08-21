@@ -27,9 +27,9 @@ mutable struct cohort_v
     jb
     l
     jt
-     xv::Array{Float64,1}
-     yv::Array{Float64,1}
-     wv::Array{Float64,1}
+     xv::Array{Float64}(undef,1)
+     yv::Array{Float64}(undef,1)
+     wv::Array{Float64}(undef,1)
  end
 
 """
@@ -41,7 +41,7 @@ cs -  vector of cohort of mutable struct cohort_v
 mutable struct cohorts_v
        tmax
     jmax
-    cs::Array{cohort_v,1}
+    cs::Array{Any}(undef,1)
  end
 
 
@@ -56,7 +56,7 @@ mutable struct cohorts_v1
     year_b
     tmax
     jmax
-    cs::Array{cohort_v,1}
+    cs::Array{Any}(undef,1)
  end
 
 """
@@ -78,9 +78,9 @@ mutable struct cohort_v1
     jbeg
     len
     jtrust
-     xv::Array{Float64,1}
-     yv::Array{Float64,1}
-     wv::Array{Float64,1}
+     xv::Array{Float64}(undef,1)
+     yv::Array{Float64}(undef,1)
+     wv::Array{Float64}(undef,1)
  end
 
 """
@@ -143,7 +143,7 @@ mutable struct cvec
     jbeg
     len
     jtrust
-    vec::Array{Float64,1}
+    vec::Array{Float64}(undef,1)
      
  end
 
@@ -196,7 +196,7 @@ function cst2csv2(cs::cohorts_t1)
     year0=year1-jmax+1
                 #println(year0)
                 #println(year1)
-    csv1=Array{cohort_v1,1}(tmax+jmax-1)
+    csv1=Array{Any}(undef,tmax+jmax-1)
     
     for year in year0:year1-1
         i=year-year0+1
@@ -441,7 +441,7 @@ function csmtx2csvs(csrmtx::csmtx)
     #println(year1)
     #println(year2)
     #println(year3)
-    vecs=Array{cvec}(tmax+jmax-1)
+    vecs=Array{Any}(undef,tmax+jmax-1)
     
     for year in year0:year1-1
         i=year-year0+1
@@ -1738,7 +1738,7 @@ end
 returns total mortality z as sum of natural m and fishing f mortality matrices
 """
 function gz(m::Array{Float64,2},f::Array{Float64,2},tmax,jmax)
-    z=Array{Float64,2}(tmax,jmax)
+    z=Array{Float64}{undef,tmax,jmax)
     z=m+f
     return(z)
 end
@@ -1747,8 +1747,8 @@ end
 generates g matrix with m and f, tmax,jmax
 """
 function gg(m::Array{Float64,2},f::Array{Float64,2},tmax,jmax)
-    z=Array{Float64,2}(tmax,jmax)
-    g=Array{Float64,2}(tmax,jmax)
+    z=Array{Float64}(undef,tmax,jmax)
+    g=Array{Float64}(undef,tmax,jmax)
     z=gz(m,f,tmax,jmax)
     for t in 1:tmax
         for j in 1:jmax
