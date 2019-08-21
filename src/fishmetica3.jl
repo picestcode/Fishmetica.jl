@@ -186,7 +186,7 @@ jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 tmax+jmax-1 -- number of related cohorts
 """
-function cst2csv2(cs::cohorts_t1)
+function cst2csv2(cs)
    x=cs.x
     y=cs.y
     w=cs.w
@@ -276,7 +276,7 @@ len - length
 jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 """
-function csv2cst(csv::cohorts_v2)
+function csv2cst(csv)
     
     year1=csv.year_b
     tmax=csv.tmax
@@ -517,7 +517,7 @@ jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 tmax+jmax-2 -- number of related cohorts
 """
-function csvs2csmtx(csvs::csvecs)
+function csvs2csmtx(csvs)
     
     year1=csvs.year_b
     tmax=csvs.tmax
@@ -640,7 +640,7 @@ end
 generates xv1,yv1 of csvecs mutable struct with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
 first makes a deep copy, then modifies vectors 
 """
-function gvecs(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
+function gvecs(xv,yvs,wv,zv,gv)
     xv1=deepcopy(xv)
     yv1=deepcopy(yv)
     
@@ -845,7 +845,7 @@ end
 generates xv1,yv1 of csvecs mutable struct with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
 first makes a deep copy, then modifies vectors 
 """
-function gvecs1(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
+function gvecs1(xv,yv,wv,zv,gv)
     xv1=deepcopy(xv)
     yv1=deepcopy(yv)
     
