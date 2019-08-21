@@ -27,9 +27,9 @@ mutable struct cohort_v
     jb
     l
     jt
-     xv::Array{Float64}(undef,1)
-     yv::Array{Float64}(undef,1)
-     wv::Array{Float64}(undef,1)
+     xv::Array{Float64}
+     yv::Array{Float64}
+     wv::Array{Float64}
  end
 
 """
@@ -41,7 +41,7 @@ cs -  vector of cohort of mutable struct cohort_v
 mutable struct cohorts_v
        tmax
     jmax
-    cs::Array{Any}(undef,1)
+    cs::Array{cohort_v}
  end
 
 
@@ -56,7 +56,7 @@ mutable struct cohorts_v1
     year_b
     tmax
     jmax
-    cs::Array{Any}(undef,1)
+    cs::Array{cohort_v}
  end
 
 """
@@ -78,9 +78,9 @@ mutable struct cohort_v1
     jbeg
     len
     jtrust
-     xv::Array{Float64}(undef,1)
-     yv::Array{Float64}(undef,1)
-     wv::Array{Float64}(undef,1)
+     xv::Array{Float64}
+     yv::Array{Float64}
+     wv::Array{Float64}
  end
 
 """
@@ -143,7 +143,7 @@ mutable struct cvec
     jbeg
     len
     jtrust
-    vec::Array{Float64}(undef,1)
+    vec::Array{Float64}
      
  end
 
@@ -196,12 +196,12 @@ function cst2csv2(cs)
     year0=year1-jmax+1
                 #println(year0)
                 #println(year1)
-<<<<<<< HEAD
-    #csv1=Array{cohort_v1}(tmax+jmax-1)
+
+#    csv1=Array{cohort_v1}(tmax+jmax-1)
 csv1=Array{cohort_v1}(undef,tmax+jmax-1)
-=======
-    csv1=Array{Any}(undef,tmax+jmax-1)
->>>>>>> 2e2e14a0f6f5611726b6ba825f4c4470a009f1d9
+
+    #csv1=Array{Any}(undef,tmax+jmax-1)
+
     
     for year in year0:year1-1
         i=year-year0+1
@@ -446,11 +446,11 @@ function csmtx2csvs(csrmtx)
     #println(year1)
     #println(year2)
     #println(year3)
-<<<<<<< HEAD
+
     vecs=Array{cvec,1}(undef,tmax+jmax-1)
-=======
-    vecs=Array{Any}(undef,tmax+jmax-1)
->>>>>>> 2e2e14a0f6f5611726b6ba825f4c4470a009f1d9
+
+#    vecs=Array{Any}(undef,tmax+jmax-1)
+
     
     for year in year0:year1-1
         i=year-year0+1
@@ -1747,7 +1747,7 @@ end
 returns total mortality z as sum of natural m and fishing f mortality matrices
 """
 function gz(m::Array{Float64,2},f::Array{Float64,2},tmax,jmax)
-    z=Array{Float64}{undef,tmax,jmax)
+    z=Array{Float64}(undef,tmax,jmax)
     z=m+f
     return(z)
 end
@@ -1906,4 +1906,3 @@ for t in 1:tmax
 
     
 end
-
