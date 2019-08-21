@@ -428,7 +428,7 @@ jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 tmax+jmax-1 -- number of related cohorts
 """
-function csmtx2csvs(csrmtx::csmtx)
+function csmtx2csvs(csrmtx)
    year1=csrmtx.year_b
     tmax=csrmtx.tmax
     jmax=csrmtx.jmax
