@@ -1,4 +1,4 @@
-W=readdlm("W.txt")
+w=readdlm("W.txt")
 
 x=readdlm("x.txt")
 

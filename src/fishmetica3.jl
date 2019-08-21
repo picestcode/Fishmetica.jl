@@ -1,7 +1,7 @@
 """
 cohorts as 3 matrices: year_b - initial year, year_e - last year,  x - abundance, y - catch, w - weight (obsolete)
 """
-type  cohorts_t  
+mutable struct  cohorts_t  
      year_b
     year_e
     x
@@ -20,7 +20,7 @@ l - length
 jt - trusted age
 xv,yv,wv - vectors with abundunce, catch, weight
 """
-type cohort_v
+mutable struct cohort_v
     tmax
     jmax
     yb
@@ -36,9 +36,9 @@ type cohort_v
 detail  representation of given cohorts
 tmax - number of seasons
 jmax - number of ages
-cs -  vector of cohort of type cohort_v
+cs -  vector of cohort of mutable struct cohort_v
 """
-type cohorts_v
+mutable struct cohorts_v
        tmax
     jmax
     cs::Array{cohort_v,1}
@@ -49,10 +49,10 @@ type cohorts_v
 detail  representation of given cohorts
 tmax - number of seasons
 jmax - number of ages
-cs -  vector of cohort of type cohort_v
+cs -  vector of cohort of mutable struct cohort_v
 """
 
-type cohorts_v1
+mutable struct cohorts_v1
     year_b
     tmax
     jmax
@@ -70,7 +70,7 @@ len - length
 jtrust - trusted age
 xv,yv,wv - vectors with abundunce, catch, weight
 """
-type cohort_v1
+mutable struct cohort_v1
     no
     yb
     tmax
@@ -90,7 +90,7 @@ tmax - number of seasons
 jmax - number of ages
 x,y,w- tables with abundunce, catch, weight
 """
-type  cohorts_t1  
+mutable struct  cohorts_t1  
      year_b
    tmax
     jmax
@@ -107,7 +107,7 @@ year_b - physical year associated with cohort (when age=1)
 tmax - number of seasons
 jmax - number of ages
 """
-type cohorts_v2
+mutable struct cohorts_v2
     year_b
     tmax
     jmax
@@ -121,7 +121,7 @@ tmax - number of seasons
 jmax - number of ages
 mtx: x,y,w,m,f, etc.
 """
-type csmtx
+mutable struct csmtx
     year_b
     tmax
     jmax
@@ -137,7 +137,7 @@ len - length
 jtrust - trusted age
 vec
 """
-type cvec
+mutable struct cvec
     no
     yb
     jbeg
@@ -150,7 +150,7 @@ type cvec
 """
 cohort as vecs
 """
-type csvecs
+mutable struct csvecs
     year_b
     tmax
     jmax
@@ -173,7 +173,7 @@ cohorts_v2:
 year_b - initial physical year
 tmax - number of seasons
 jmax - number of ages
-cs - cohorts of type cohort_v1
+cs - cohorts of mutable struct cohort_v1
 
 cohort_v1:
 no- the number
@@ -196,7 +196,8 @@ function cst2csv2(cs::cohorts_t1)
     year0=year1-jmax+1
                 #println(year0)
                 #println(year1)
-    csv1=Array{cohort_v1,1}(tmax+jmax-1)
+    #csv1=Array{cohort_v1}(tmax+jmax-1)
+csv1=Array{cohort_v1}(undef,tmax+jmax-1)
     
     for year in year0:year1-1
         i=year-year0+1
@@ -264,7 +265,7 @@ cohorts_v2:
 year_b - initial physical year
 tmax - number of seasons
 jmax - number of ages
-cs - cohorts of type cohort_v1
+cs - cohorts of mutable struct cohort_v1
 
 cohort_v1:
 no- the number
@@ -399,10 +400,10 @@ function csv2cst(csv::cohorts_v2)
 end
 
 """
-cohorts related matrix (of type csmtx: x,y,w,m,f,z,g)->sequence of vectors (of type csvecs)
+cohorts related matrix (of mutable struct csmtx: x,y,w,m,f,z,g)->sequence of vectors (of mutable struct csvecs)
 
 
-csrm:cohorts related matrix (of type csrm)
+csrm:cohorts related matrix (of mutable struct csrm)
 year_b - initial physical year
 tmax - number of seasons
 jmax - number of ages
@@ -441,7 +442,7 @@ function csmtx2csvs(csrmtx::csmtx)
     #println(year1)
     #println(year2)
     #println(year3)
-    vecs=Array{cvec}(tmax+jmax-1)
+    vecs=Array{cvec,1}(undef,tmax+jmax-1)
     
     for year in year0:year1-1
         i=year-year0+1
@@ -449,7 +450,7 @@ function csmtx2csvs(csrmtx::csmtx)
         #println(i)
        
         vecs[i]=cvec(i,year,
-        jmax-i+1,i,indmax(map(j->mtx[j,jmax-i+j],1:i)),
+        jmax-i+1,i,argmax(map(j->mtx[j,jmax-i+j],1:i)),
         map(j->mtx[j,jmax-i+j],1:i))
         #println(vecs[i])
     end
@@ -463,7 +464,7 @@ function csmtx2csvs(csrmtx::csmtx)
              #println(i)
         #println(i-year0+year1)
             vecs[i-year0+year1]=cvec(i-year0+year1,year,
-            1,jmax, indmax(map(j->mtx[i+j-1,j],1:jmax)),  
+            1,jmax, argmax(map(j->mtx[i+j-1,j],1:jmax)),  
             map(j->mtx[i+j-1,j],1:jmax))
             #println( vecs[i-year0+year1])
         end
@@ -479,7 +480,7 @@ function csmtx2csvs(csrmtx::csmtx)
             #println(i)
             #println(i-year1+year2)
         vecs[i-year1+year2+1]=cvec(i-year1+year2+1,year,
-        1,tmax-i+1,indmax(map(j->mtx[i+j-1,j],1:tmax-i+1)),  
+        1,tmax-i+1,argmax(map(j->mtx[i+j-1,j],1:tmax-i+1)),  
         map(j->mtx[i+j-1,j],1:tmax-i+1))
         #println( vecs[i-year1+year2+1])
     end
@@ -488,10 +489,10 @@ function csmtx2csvs(csrmtx::csmtx)
 end
 
 """
-sequence of vectors (of type csvecs)->cohorts related matrix (of type csrm) (x,y,w,m,f,z,g)
+sequence of vectors (of mutable struct csvecs)->cohorts related matrix (of mutable struct csrm) (x,y,w,m,f,z,g)
 
 
-csrm:cohorts related matrix (of type csrm)
+csrm:cohorts related matrix (of mutable struct csrm)
 year_b - initial physical year
 tmax - number of seasons
 jmax - number of ages
@@ -637,7 +638,7 @@ end
 
 
 """
-generates xv1,yv1 of csvecs type with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
+generates xv1,yv1 of csvecs mutable struct with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
 first makes a deep copy, then modifies vectors 
 """
 function gvecs(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
@@ -842,7 +843,7 @@ function gvecs(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
 end
     
 """
-generates xv1,yv1 of csvecs type with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
+generates xv1,yv1 of csvecs mutable struct with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
 first makes a deep copy, then modifies vectors 
 """
 function gvecs1(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
@@ -1376,7 +1377,7 @@ function Lmine2(cst,a1m,a2m,b1m,b2m,cm,d1m,d2m,htj,as,bs,ft,kx,kw,p)
     #println(L2)
   # println(L1+L2)
     local result
-    result=lambda *L11/((tmax-1)*(jmax-1)-1)+(1.-lambda)*L22/(tmax*jmax)
+    result=lambda *L11/((tmax-1)*(jmax-1)-1)+(1. - lambda)*L22/(tmax*jmax)
     
     if result==Inf 10000.0 else result end
 end
@@ -1486,7 +1487,7 @@ function Lmine2max(cst,a1m,a2m,b1m,b2m,cm,d1m,d2m,htj,as,bs,ft,kx,kw,p)
     
     
     
-    result=max(lambda*L11/((tmax-1)*(jmax-1)-1),(1.-lambda)*L22/(tmax*jmax))
+    result=max(lambda*L11/((tmax-1)*(jmax-1)-1),(1. - lambda)*L22/(tmax*jmax))
     
     if result==Inf 10000.0 else result end
 end

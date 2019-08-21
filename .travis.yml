@@ -4,7 +4,7 @@ os:
   - linux
   #- osx
 julia:
-  - 0.6.2
+  - 1.2.0
  # - nightly
 notifications:
   email: false
@@ -27,10 +27,10 @@ matrix:
 
 ## uncomment the following lines to override the default test script
 script:
-  - julia -e 'Pkg.clone(pwd()); Pkg.add("Distributions");Pkg.build("Fishmetica"); Pkg.test("Fishmetica"; coverage=true)'
+  - julia -e 'using Pkg; Pkg.clone(pwd()); Pkg.add("Distributions");Pkg.build("Fishmetica"); Pkg.test("Fishmetica"; coverage=true)'
 after_success:
   # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("Fishmetica")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  - julia -e 'cd(using Pkg; Pkg.dir("Fishmetica")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
   - julia -e 'cd(Pkg.dir("Fishmetica")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
 
