@@ -27,9 +27,9 @@ mutable struct cohort_v
     jb
     l
     jt
-     xv::Array{Float64,1}
-     yv::Array{Float64,1}
-     wv::Array{Float64,1}
+     xv::Array{Float64}
+     yv::Array{Float64}
+     wv::Array{Float64}
  end
 
 """
@@ -41,7 +41,7 @@ cs -  vector of cohort of mutable struct cohort_v
 mutable struct cohorts_v
        tmax
     jmax
-    cs::Array{cohort_v,1}
+    cs::Array{cohort_v}
  end
 
 
@@ -56,7 +56,7 @@ mutable struct cohorts_v1
     year_b
     tmax
     jmax
-    cs::Array{cohort_v,1}
+    cs::Array{cohort_v}
  end
 
 """
@@ -78,9 +78,9 @@ mutable struct cohort_v1
     jbeg
     len
     jtrust
-     xv::Array{Float64,1}
-     yv::Array{Float64,1}
-     wv::Array{Float64,1}
+     xv::Array{Float64}
+     yv::Array{Float64}
+     wv::Array{Float64}
  end
 
 """
@@ -143,7 +143,7 @@ mutable struct cvec
     jbeg
     len
     jtrust
-    vec::Array{Float64,1}
+    vec::Array{Float64}
      
  end
 
@@ -186,7 +186,7 @@ jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 tmax+jmax-1 -- number of related cohorts
 """
-function cst2csv2(cs::cohorts_t1)
+function cst2csv2(cs)
    x=cs.x
     y=cs.y
     w=cs.w
@@ -196,7 +196,12 @@ function cst2csv2(cs::cohorts_t1)
     year0=year1-jmax+1
                 #println(year0)
                 #println(year1)
-    csv1=Array{cohort_v1,1}(tmax+jmax-1)
+
+#    csv1=Array{cohort_v1}(tmax+jmax-1)
+csv1=Array{cohort_v1}(undef,tmax+jmax-1)
+
+    #csv1=Array{Any}(undef,tmax+jmax-1)
+
     
     for year in year0:year1-1
         i=year-year0+1
@@ -276,7 +281,7 @@ len - length
 jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 """
-function csv2cst(csv::cohorts_v2)
+function csv2cst(csv)
     
     year1=csv.year_b
     tmax=csv.tmax
@@ -428,7 +433,7 @@ jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 tmax+jmax-1 -- number of related cohorts
 """
-function csmtx2csvs(csrmtx::csmtx)
+function csmtx2csvs(csrmtx)
    year1=csrmtx.year_b
     tmax=csrmtx.tmax
     jmax=csrmtx.jmax
@@ -441,7 +446,11 @@ function csmtx2csvs(csrmtx::csmtx)
     #println(year1)
     #println(year2)
     #println(year3)
-    vecs=Array{cvec}(tmax+jmax-1)
+
+    vecs=Array{cvec,1}(undef,tmax+jmax-1)
+
+#    vecs=Array{Any}(undef,tmax+jmax-1)
+
     
     for year in year0:year1-1
         i=year-year0+1
@@ -449,7 +458,7 @@ function csmtx2csvs(csrmtx::csmtx)
         #println(i)
        
         vecs[i]=cvec(i,year,
-        jmax-i+1,i,indmax(map(j->mtx[j,jmax-i+j],1:i)),
+        jmax-i+1,i,argmax(map(j->mtx[j,jmax-i+j],1:i)),
         map(j->mtx[j,jmax-i+j],1:i))
         #println(vecs[i])
     end
@@ -463,7 +472,7 @@ function csmtx2csvs(csrmtx::csmtx)
              #println(i)
         #println(i-year0+year1)
             vecs[i-year0+year1]=cvec(i-year0+year1,year,
-            1,jmax, indmax(map(j->mtx[i+j-1,j],1:jmax)),  
+            1,jmax, argmax(map(j->mtx[i+j-1,j],1:jmax)),  
             map(j->mtx[i+j-1,j],1:jmax))
             #println( vecs[i-year0+year1])
         end
@@ -479,7 +488,7 @@ function csmtx2csvs(csrmtx::csmtx)
             #println(i)
             #println(i-year1+year2)
         vecs[i-year1+year2+1]=cvec(i-year1+year2+1,year,
-        1,tmax-i+1,indmax(map(j->mtx[i+j-1,j],1:tmax-i+1)),  
+        1,tmax-i+1,argmax(map(j->mtx[i+j-1,j],1:tmax-i+1)),  
         map(j->mtx[i+j-1,j],1:tmax-i+1))
         #println( vecs[i-year1+year2+1])
     end
@@ -517,7 +526,7 @@ jtrust - trusted age
 xv,yv,wv- vectors with abundunce, catch, weight
 tmax+jmax-2 -- number of related cohorts
 """
-function csvs2csmtx(csvs::csvecs)
+function csvs2csmtx(csvs)
     
     year1=csvs.year_b
     tmax=csvs.tmax
@@ -640,7 +649,7 @@ end
 generates xv1,yv1 of csvecs mutable struct with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
 first makes a deep copy, then modifies vectors 
 """
-function gvecs(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
+function gvecs(xv,yvs,wv,zv,gv)
     xv1=deepcopy(xv)
     yv1=deepcopy(yv)
     
@@ -845,7 +854,7 @@ end
 generates xv1,yv1 of csvecs mutable struct with use of xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs
 first makes a deep copy, then modifies vectors 
 """
-function gvecs1(xv::csvecs,yv::csvecs,wv::csvecs,zv::csvecs,gv::csvecs)
+function gvecs1(xv,yv,wv,zv,gv)
     xv1=deepcopy(xv)
     yv1=deepcopy(yv)
     
@@ -1738,7 +1747,7 @@ end
 returns total mortality z as sum of natural m and fishing f mortality matrices
 """
 function gz(m::Array{Float64,2},f::Array{Float64,2},tmax,jmax)
-    z=Array{Float64,2}(tmax,jmax)
+    z=Array{Float64}(undef,tmax,jmax)
     z=m+f
     return(z)
 end
@@ -1747,8 +1756,8 @@ end
 generates g matrix with m and f, tmax,jmax
 """
 function gg(m::Array{Float64,2},f::Array{Float64,2},tmax,jmax)
-    z=Array{Float64,2}(tmax,jmax)
-    g=Array{Float64,2}(tmax,jmax)
+    z=Array{Float64}(undef,tmax,jmax)
+    g=Array{Float64}(undef,tmax,jmax)
     z=gz(m,f,tmax,jmax)
     for t in 1:tmax
         for j in 1:jmax
@@ -1897,4 +1906,3 @@ for t in 1:tmax
 
     
 end
-

@@ -1,7 +1,7 @@
 using Fishmetica
-using Base.Test
+using Test
+using DelimitedFiles
 
-tic()
 
 println("Test 1")
 @time  include("test1.jl")
@@ -12,7 +12,7 @@ println("Test 2")
 println("Test 3")
 @time include("test3.jl")
 
-toc()
+
 
 # write your own tests here
 #@test 1 == 2
