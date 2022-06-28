@@ -1,5 +1,5 @@
 module Fishmetica
- using Base.Test
+ using Test
  using Distributions
 #using NLopt
 
