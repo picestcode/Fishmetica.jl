@@ -1,6 +1,6 @@
 module Fishmetica
- using Test
- using Distributions
+ #using Test
+ #using Distributions
 #using NLopt
 
 global ALGS
