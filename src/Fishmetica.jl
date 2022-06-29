@@ -1,5 +1,5 @@
 module Fishmetica
- #using Test
+ using Test
  #using Distributions
 #using NLopt
 

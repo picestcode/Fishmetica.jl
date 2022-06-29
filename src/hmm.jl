@@ -25,8 +25,8 @@ end
 
 #FILTERING
 
-doc"""
-filtering: returns a vector of deviations ($sigma^2^f$) for a cohort 
+"""
+filtering: returns a vector of deviations (sigma^2^f) for a cohort 
 sigma^2_0 - variance  for initial age
 sigma^2_e -  variance  for the evidance vector (catches)
 sigma^2_x -  variance  for the state vector (population)
