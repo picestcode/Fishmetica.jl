@@ -127,7 +127,15 @@ genmus2p,
 
 genmus2s,
 genQuantile,
-genQuantile1
+genQuantile1,
+
+
+bootstrapfiltering,
+xwais,
+xwwais,
+kitagawaprediction,
+fixedintervalsmoothing,
+kitagawaliklihood
 
 
 #include("types2.jl")
@@ -135,6 +143,7 @@ include("burago-2.jl")
 include("fishmetica3.jl")
 include("tests.jl")
 include("hmm.jl")
+include("fpsl.jl")
 
 """
 const coefficients at main equations, default value
