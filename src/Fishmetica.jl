@@ -1,5 +1,5 @@
 module Fishmetica
- using Test, Distributions
+ using Test, Distributions, KernelDensity 
 #using NLopt
 
 global ALGS

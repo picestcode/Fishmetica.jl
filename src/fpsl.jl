@@ -24,8 +24,8 @@ function bootstrapfiltering(N,len,rx,ry,logts1,logc1,alpha,beta)
     
     
  # kde for rx and ry 
-  kdex=kde(vec(rx));
-  kdey=kde(vec(ry));  
+  kdex=KernelDensity.kde(vec(rx));
+  kdey=KernelDensity.kde(vec(ry));  
    
  #  init 
    
@@ -89,7 +89,8 @@ N - number of particles
 """
 
 
-function xwais(c,N,rlxL,rlyL)
+function xwais(c,N,rlxL,rlyL,csvts1, csvc1,csvZL,csvlogGL);
+
     
  
     lc=length(c)
@@ -106,7 +107,7 @@ for n in c
         #println(n)
        
         
-    l=length(csvx1L.vecs[n].vec); 
+    l=length(csvts1.vecs[n].vec); 
         
         
 
@@ -143,7 +144,7 @@ N - number of particles
 """
 
 
-function xwwais(c,N,rlxL,rlyL)
+function xwwais(c,N,rlxL,rlyL,csvts1, csvc1,csvZL,csvlogGL)
     
  
     lc=length(c)
@@ -160,7 +161,7 @@ for n in c
         #println(n)
        
         
-    l=length(csvx1L.vecs[n].vec); 
+    l=length(csvts1.vecs[n].vec); 
         
         
 
