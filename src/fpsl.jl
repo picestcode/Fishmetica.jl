@@ -61,18 +61,21 @@ function bootstrapfiltering(N,len,rx,ry,logts1,logc1,alpha,beta)
    
    
     
-    
-   
-     
-   
      for a in 2:len
   
         for i in 1:N
+
+        if sum(pvai[a,:]==0. wai[a,i]=1/N else
            
           wai[a,i]=abs(pvai[a,i])/sum(pvai[a,:])#abs to avoid "zero" negative values
+          end
                  end
         
     end
+   
+     
+   
+    
     
    
      
