@@ -1,0 +1,4 @@
+name = "Fishmetica"
+uuid = "eeb17e95-48b0-4f56-814a-df0755286757"
+authors = ["Igor Shevchenko <picestcode@yandex.ru>"]
+version = "0.1.0"
