@@ -6,3 +6,4 @@ version = "0.1.0"
 [deps]
 Distributions="31c24e10-a181-5473-b8eb-7969acd0382f"
 KernelDensity="5ab0869b-81aa-558d-bb23-cbf5423bbe9b"
+NLopt="76087f3c-5699-56af-9a33-bf431cd00edd"
