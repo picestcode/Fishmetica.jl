@@ -452,8 +452,8 @@ index (Lmine2) evaluation for cohorts of cst type/Lmine2, p=2
      using  closures in opt: (x,grad)->buragofunc(x,cst,kx,kw,grad) 
 """
     
-"""
-function minefuncp2(x::Vector, grad::Vector)
+
+function minefuncp2(x,cst,kx,kw,grad)
  
    
     (tmax,jmax)=size(cst.x)
@@ -502,7 +502,7 @@ end
 index (Lmine2max) evaluation for cohorts of cst type/Lmine2max, p=2
      using  closures in opt: (x,grad)->buragofunc(x,cst,kx,kw,grad) 
 """
-"""
+
 function minefuncp2max(x,cst,kx,kw,grad)
  
     global cst
