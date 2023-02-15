@@ -659,7 +659,7 @@ optimizes Lp with 2 algs (a -main and a1 - local), buragofunc   and 4 buragocons
 """
 #
 function optimizeL(x,cst,kx,kw,a,a1,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
-   (tmax,jmax)=size(cst)
+   (tmax,jmax)=size(cst.x)
    
 global count = 0# keep track of # of function evaluations
 opt = Opt(ALGS[a], 4*tmax+9)
