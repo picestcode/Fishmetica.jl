@@ -455,14 +455,13 @@ index (Lmine2) evaluation for cohorts of cst type/Lmine2, p=2
 """
 function minefuncp2(x::Vector, grad::Vector)
  
-    global cst
+   
     (tmax,jmax)=size(cst.x)
     
     local Hl=fill(1.0,tmax,jmax)
     local ftl=fill(1,tmax)
     
-    global kx,kw
-    global count
+    
     
     if length(grad) > 0
         grad[1] = 0
@@ -470,7 +469,7 @@ function minefuncp2(x::Vector, grad::Vector)
     end    
     
     
-    count::Int += 1
+  
  
     
     
