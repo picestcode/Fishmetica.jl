@@ -355,18 +355,18 @@ function buragoconstraint6(x::Vector,i, kappa2)
     x[i]-kappa2
     end
 """
-criterion (Laplace) evaluation for cohorts of cst type/Lp, p=1
+Laplace index evaluation for cohorts of cst type/Lp, p=1
+    using  closures in opt: (x,grad)->buragofunc(x,cst,kx,kw,grad) 
 """
-function buragofunc(x::Vector, grad::Vector)
+function buragofunc(x,cst,kx,kw,grad)
  
-    global cst
+    
     (tmax,jmax)=size(cst.x)
     
     local Hl=fill(1.0,tmax,jmax)
     local ftl=fill(1,tmax)
     
-    global kx,kw
-    global count
+   
     
     if length(grad) > 0
         grad[1] = 0
@@ -374,8 +374,7 @@ function buragofunc(x::Vector, grad::Vector)
     end    
     
     
-    count::Int += 1
- 
+   
     
     
   
@@ -403,27 +402,26 @@ end
 
 
 """
-criterion (Gauss) evaluation for cohorts of cst type/Lp, p=2
+Gauss index evaluation for cohorts of cst type/Lp, p=2
+     using  closures in opt: (x,grad)->buragofunc(x,cst,kx,kw,grad) 
 """
 #p=2
-function buragofuncp2(x::Vector, grad::Vector)
+function buragofuncp2(x,cst,kx,kw,grad)
  
-    global cst
+    
     (tmax,jmax)=size(cst.x)
     
     local Hl=fill(1.0,tmax,jmax)
     local ftl=fill(1,tmax)
     
-    global kx,kw
-    global count
-    
+       
     if length(grad) > 0
         grad[1] = 0
         grad[2] = 0.5/sqrt(x[2])
     end    
     
     
-    count::Int += 1
+   
  
     
     
@@ -450,7 +448,10 @@ for t in 1:tmax
 end
 
 """
-criterion (normal, deviation) evaluation for cohorts of cst type/Lmine2, p=2
+index (Lmine2) evaluation for cohorts of cst type/Lmine2, p=2
+     using  closures in opt: (x,grad)->buragofunc(x,cst,kx,kw,grad) 
+"""
+    
 """
 function minefuncp2(x::Vector, grad::Vector)
  
@@ -499,9 +500,11 @@ end
 
 
 """
-criterion (normal, deviation) evaluation for cohorts of cst type/Lmine2max, p=2
+index (Lmine2max) evaluation for cohorts of cst type/Lmine2max, p=2
+     using  closures in opt: (x,grad)->buragofunc(x,cst,kx,kw,grad) 
 """
-function minefuncp2max(x::Vector, grad::Vector)
+"""
+function minefuncp2max(x,cst,kx,kw,grad)
  
     global cst
     (tmax,jmax)=size(cst.x)
@@ -547,18 +550,17 @@ end
 
 
 """
-criterion (normal, deviation) evaluation for cohorts of cst type/Lp12, p=2
+index (Lp1) evaluation for cohorts of cst type/Lp12, p=2
 """
-function buragofunc12(x::Vector, grad::Vector)
+function buragofunc12(x,cst,kx,kw,grad)
  
-    global cst
+    
     (tmax,jmax)=size(cst.x)
     
     local Hl=fill(1.0,tmax,jmax)
     local ftl=fill(1,tmax)
     
-    global kx,kw
-    global count
+    
     
     if length(grad) > 0
         grad[1] = 0
@@ -566,7 +568,7 @@ function buragofunc12(x::Vector, grad::Vector)
     end    
     
     
-    count::Int += 1
+    
  
     
     
@@ -657,8 +659,8 @@ end
 optimizes Lp with 2 algs (a -main and a1 - local), buragofunc   and 4 buragoconstraints
 """
 #
-function optimizeL(x,tmax,jmax,a,a1,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
-   
+function optimizeL(x,cst,kx,kw,a,a1,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
+   (tmax,jmax)=size(cst)
    
 global count = 0# keep track of # of function evaluations
 opt = Opt(ALGS[a], 4*tmax+9)
@@ -675,7 +677,7 @@ l_opt= Opt(ALGS[a1], 4*tmax+9)
     xtol_rel!(opt,xtol)
     xtol_rel!(l_opt,xtol1)
 
-min_objective!(opt, buragofunc)
+min_objective!(opt, (x,grad)->buragofunc(x,cst,kx,kw,grad))
     inequality_constraint!(opt, (x,g) -> buragoconstraint1(x,jmax), ctol)
     inequality_constraint!(opt, (x,g) -> buragoconstraint2(x,jmax), ctol)
     inequality_constraint!(opt, (x,g) -> buragoconstraint3(x,jmax),ctol )
@@ -713,7 +715,7 @@ end
 optimizes Lp with 1 algs (a -main), buragofunc   and 4 buragoconstraints, no lower_bounds, no x_tol, no local_optimizer?
 no population
 """
-function optimizeLs(x,tmax,jmax,a,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
+function optimizeLs(x,cst,kx,kw,a,a1,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
    
    global count = 0
 opt = Opt(ALGS[a], 4*tmax+9)
@@ -723,7 +725,7 @@ opt = Opt(ALGS[a], 4*tmax+9)
     xtol_rel!(opt,xtol)
     #xtol_rel!(l_opt,xtol1)
 
-min_objective!(opt, buragofunc)
+min_objective!(opt,(x,grad)->buragofunc(x,cst,kx,kw,grad))
     inequality_constraint!(opt, (x,g) -> buragoconstraint1(x,jmax), ctol)
     inequality_constraint!(opt, (x,g) -> buragoconstraint2(x,jmax), ctol)
     inequality_constraint!(opt, (x,g) -> buragoconstraint3(x,jmax),ctol )
@@ -755,7 +757,7 @@ end
 """
 optimizes Lp with 2 algs (a -main and a1 - local), buragofunc_v   and 4 buragoconstraints
 """
-function optimizeLp_v2(x,tmax,jmax,a,a1,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
+function optimizeLp_v2(x,cst,kx,kw,a,a1,lb,lb1,xtol,xtol1,bc4,ctol,is1,is2,is3,pop,pop1,maxe)
    
    
 global count = 0# keep track of # of function evaluations
@@ -773,7 +775,7 @@ l_opt= Opt(ALGS[a1], 4*tmax+9)
     xtol_rel!(opt,xtol)
     xtol_rel!(l_opt,xtol1)
 
-min_objective!(opt, buragofunc_v)
+min_objective!(opt, (x,grad)->buragofunc_v(x,cst,kx,kw,grad))
     inequality_constraint!(opt, (x,g) -> buragoconstraint1(x,jmax), ctol)
     inequality_constraint!(opt, (x,g) -> buragoconstraint2(x,jmax), ctol)
     inequality_constraint!(opt, (x,g) -> buragoconstraint3(x,jmax),ctol )
@@ -813,7 +815,7 @@ xx - initial approximation for pars,
 k - number of iterations,
 algs - list of algs
 """
-function opt_v(xx,k,algs)
+function opt_v(xx,k,cst,kx,kw,algs)
 @eval @everywhere  xxx=$xx
 flag=true
 ni=0
@@ -821,7 +823,7 @@ result=0.0
 while flag
     ni+=1 
     println(ni)
-    pm= pmap(i->optimizeLp_v2(xxx,tmax,jmax,7,i,0.0,0.0,1e-20,1e-20,2.,1e-20,1.,1.,0.1,5,5,50000),algs)
+    pm= pmap(i->optimizeLp_v2(xxx,cst,kx,kw,7,i,0.0,0.0,1e-20,1e-20,2.,1e-20,1.,1.,0.1,5,5,50000),algs)
    
     pm1=filter(x->typeof(x)==Tuple{Float64,Array{Float64,1},Symbol},pm)
    minfs=map(i->pm1[i][1],1:length(pm1))
